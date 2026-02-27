@@ -10,11 +10,10 @@ package cadastro;
  */
 public class Cadastro {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+        Tela t = new Tela();
+        t.setVisible(true);
     }
     
 }
