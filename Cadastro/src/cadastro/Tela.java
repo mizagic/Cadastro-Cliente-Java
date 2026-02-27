@@ -4,6 +4,8 @@
  */
 package cadastro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author operador
@@ -15,7 +17,7 @@ public class Tela extends javax.swing.JFrame {
      */
     public Tela() {
         initComponents();
-        
+
         jSlider1.setMinimum(0);
         jSlider1.setMaximum(100);
         jSlider1.setValue(1);
@@ -79,6 +81,11 @@ public class Tela extends javax.swing.JFrame {
         jBSalvar.setBackground(new java.awt.Color(0, 153, 51));
         jBSalvar.setForeground(new java.awt.Color(255, 255, 255));
         jBSalvar.setText("SALVAR");
+        jBSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalvarActionPerformed(evt);
+            }
+        });
 
         jTNome.setForeground(new java.awt.Color(255, 255, 255));
         jTNome.addActionListener(new java.awt.event.ActionListener() {
@@ -229,8 +236,35 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_jTNomeActionPerformed
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-       jLabel8.setText(String.valueOf(jSlider1.getValue()));
+        jLabel8.setText(String.valueOf(jSlider1.getValue()));
     }//GEN-LAST:event_jSlider1StateChanged
+
+    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
+        String nome = jTNome.getText();
+        String idade = jLabel8.getText();
+        String cpf = jTCpf.getText();
+        String cidade = jTCidade.getText();
+        String bairro = jTBairro.getText();
+        String estado = jTEstado.getText();
+        String genero = null;
+
+        //VERIFICAR QUAL GÊNERO FOI SELECIONADO
+        if (jRBMasculino.isSelected()) {
+            genero = "Masculino";
+    }//GEN-LAST:event_jBSalvarActionPerformed
+        else if (jRBFeminino.isSelected()) {
+            genero = "Feminino";
+        }else if (jRBOutro.isSelected()) {
+            genero = "Outro";
+        }
+        JOptionPane.showMessageDialog(null,"NOME: "+nome
+        +"\nIdade: "+ idade
+        +"\nCPF: "+cpf
+        +"\nCidade: "+cidade
+        +"\nBairro: "+bairro
+        +"\nEstado: "+estado
+        +"\nGênero: "+genero);
+    }
 
     /**
      * @param args the command line arguments
